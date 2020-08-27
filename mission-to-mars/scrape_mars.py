@@ -35,6 +35,7 @@ def scrape():
     # set up executable path and visit url - click through to full image
     images_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     browser.visit(images_url)
+    time.sleep(1)
     browser.click_link_by_partial_text('FULL IMAGE')
     browser.click_link_by_partial_text('more info')
 
@@ -52,7 +53,8 @@ def scrape():
     # scrap all facts
     fact_table = pd.read_html(facts_url)
     fact_df = fact_table[0]
-    table_html = fact_df.to_html(header=False, index=False)
+    fact_df.columns=["Description","Mars"]
+    table_html = fact_df.to_html(header=True, index=False)
     #END fact table -------------------------------------------------------------------------------------
 
     #START Mars Hemisphere ------------------------------------------------------------------------------
