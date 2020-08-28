@@ -119,3 +119,6 @@ def scrape():
     # Close the browser after scraping
     browser.quit()
 
+#remove database
+#mars_data.dropDatabase()
+
